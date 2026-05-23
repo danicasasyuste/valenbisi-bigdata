@@ -25,7 +25,7 @@ Pipeline de Big Data para monitorizar en tiempo real las estaciones de bicicleta
 
 ## Dashboard
 
-![Dashboard](flujo BD.jpg)
+![Arquitectura](flujo%20BD.jpg)
 
 - 📊 Bicis disponibles por estación (bar chart)
 - 🔴 Estaciones sin bicis disponibles
