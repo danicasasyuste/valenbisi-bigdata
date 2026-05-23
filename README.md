@@ -4,7 +4,7 @@ Pipeline de Big Data para monitorizar en tiempo real las estaciones de bicicleta
 
 ## Arquitectura
 
-<img width="1608" height="705" alt="image" src="https://github.com/user-attachments/assets/fb3a7282-04c4-4d03-bcca-ada0261ac094" />
+![Arquitectura](flujo%20BD.jpg)
 
 
 ## Herramientas
@@ -26,7 +26,7 @@ Pipeline de Big Data para monitorizar en tiempo real las estaciones de bicicleta
 
 ## Dashboard
 
-![Arquitectura](flujo%20BD.jpg)
+<img width="1608" height="705" alt="image" src="https://github.com/user-attachments/assets/fb3a7282-04c4-4d03-bcca-ada0261ac094" />
 
 - 📊 Bicis disponibles por estación (bar chart)
 - 🔴 Estaciones sin bicis disponibles
