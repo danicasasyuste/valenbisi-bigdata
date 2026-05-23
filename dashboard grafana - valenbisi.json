@@ -1,0 +1,577 @@
+{
+  "apiVersion": "dashboard.grafana.app/v2",
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "adc7n6d",
+    "namespace": "default",
+    "uid": "e9f5e7e7-d955-4013-97c3-0f32932fb3e1",
+    "resourceVersion": "1779271016974988",
+    "generation": 5,
+    "creationTimestamp": "2026-05-20T09:52:46Z",
+    "labels": {
+      "grafana.app/deprecatedInternalID": "3395371888041984"
+    },
+    "annotations": {
+      "grafana.app/createdBy": "user:cfmme78prcwsga",
+      "grafana.app/folder": "",
+      "grafana.app/saved-from-ui": "Grafana v13.0.1+security-01 (9bbe672d)",
+      "grafana.app/updatedBy": "user:cfmme78prcwsga",
+      "grafana.app/updatedTimestamp": "2026-05-20T09:56:56Z"
+    }
+  },
+  "spec": {
+    "annotations": [
+      {
+        "kind": "AnnotationQuery",
+        "spec": {
+          "query": {
+            "kind": "DataQuery",
+            "group": "grafana",
+            "version": "v0",
+            "datasource": {
+              "name": "-- Grafana --"
+            },
+            "spec": {}
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "builtIn": true
+        }
+      }
+    ],
+    "cursorSync": "Off",
+    "editable": true,
+    "elements": {
+      "panel-1": {
+        "kind": "Panel",
+        "spec": {
+          "id": 1,
+          "title": "Bicis disponibles por estación",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "grafana-postgresql-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "dfmmeb7zr6t4wa"
+                      },
+                      "spec": {
+                        "dataset": "postgres",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT name, free_bikes, empty_slots FROM valenbisi_stations ORDER BY free_bikes DESC LIMIT 20",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "barchart",
+            "version": "13.0.1+security-01",
+            "spec": {
+              "options": {
+                "barRadius": 0,
+                "barWidth": 0.97,
+                "fullHighlight": false,
+                "groupWidth": 0.7,
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "right",
+                  "showLegend": true
+                },
+                "orientation": "auto",
+                "showValue": "never",
+                "stacking": "none",
+                "tooltip": {
+                  "hideZeros": false,
+                  "mode": "single",
+                  "sort": "none"
+                },
+                "xTickLabelRotation": 0,
+                "xTickLabelSpacing": 0
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "axisBorderShow": false,
+                    "axisCenteredZero": false,
+                    "axisColorMode": "text",
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "fillOpacity": 80,
+                    "gradientMode": "none",
+                    "hideFrom": {
+                      "legend": false,
+                      "tooltip": false,
+                      "viz": false
+                    },
+                    "lineWidth": 1,
+                    "scaleDistribution": {
+                      "type": "linear"
+                    },
+                    "thresholdsStyle": {
+                      "mode": "off"
+                    }
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-2": {
+        "kind": "Panel",
+        "spec": {
+          "id": 2,
+          "title": "Estaciones sin bicis disponibles",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "grafana-postgresql-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "dfmmeb7zr6t4wa"
+                      },
+                      "spec": {
+                        "dataset": "postgres",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT name, free_bikes, empty_slots \r\nFROM valenbisi_stations \r\nWHERE free_bikes = 0 \r\nORDER BY empty_slots DESC",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.0.1+security-01",
+            "spec": {
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-3": {
+        "kind": "Panel",
+        "spec": {
+          "id": 3,
+          "title": "Estaciones llenas",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "grafana-postgresql-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "dfmmeb7zr6t4wa"
+                      },
+                      "spec": {
+                        "dataset": "postgres",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT name, free_bikes, empty_slots \r\nFROM valenbisi_stations \r\nWHERE empty_slots = 0 \r\nORDER BY free_bikes DESC",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "table",
+            "version": "13.0.1+security-01",
+            "spec": {
+              "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  },
+                  "custom": {
+                    "align": "auto",
+                    "cellOptions": {
+                      "type": "auto"
+                    },
+                    "footer": {
+                      "reducers": []
+                    },
+                    "inspect": false
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      },
+      "panel-4": {
+        "kind": "Panel",
+        "spec": {
+          "id": 4,
+          "title": "Métricas Generales",
+          "description": "",
+          "links": [],
+          "data": {
+            "kind": "QueryGroup",
+            "spec": {
+              "queries": [
+                {
+                  "kind": "PanelQuery",
+                  "spec": {
+                    "query": {
+                      "kind": "DataQuery",
+                      "group": "grafana-postgresql-datasource",
+                      "version": "v0",
+                      "datasource": {
+                        "name": "dfmmeb7zr6t4wa"
+                      },
+                      "spec": {
+                        "dataset": "postgres",
+                        "editorMode": "code",
+                        "format": "table",
+                        "rawQuery": true,
+                        "rawSql": "SELECT \r\n  COUNT(*) as total_estaciones,\r\n  ROUND(AVG(free_bikes)::numeric, 1) as media_bicis,\r\n  SUM(free_bikes) as total_bicis_disponibles\r\nFROM valenbisi_stations",
+                        "sql": {
+                          "columns": [
+                            {
+                              "parameters": [],
+                              "type": "function"
+                            }
+                          ],
+                          "groupBy": [
+                            {
+                              "property": {
+                                "type": "string"
+                              },
+                              "type": "groupBy"
+                            }
+                          ],
+                          "limit": 50
+                        }
+                      }
+                    },
+                    "refId": "A",
+                    "hidden": false
+                  }
+                }
+              ],
+              "transformations": [],
+              "queryOptions": {}
+            }
+          },
+          "vizConfig": {
+            "kind": "VizConfig",
+            "group": "bargauge",
+            "version": "13.0.1+security-01",
+            "spec": {
+              "options": {
+                "displayMode": "lcd",
+                "legend": {
+                  "calcs": [],
+                  "displayMode": "list",
+                  "placement": "bottom",
+                  "showLegend": false
+                },
+                "maxVizHeight": 300,
+                "minVizHeight": 16,
+                "minVizWidth": 8,
+                "namePlacement": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                  "calcs": [
+                    "lastNotNull"
+                  ],
+                  "fields": "",
+                  "values": false
+                },
+                "showUnfilled": true,
+                "sizing": "auto",
+                "valueMode": "color"
+              },
+              "fieldConfig": {
+                "defaults": {
+                  "thresholds": {
+                    "mode": "absolute",
+                    "steps": [
+                      {
+                        "value": 0,
+                        "color": "green"
+                      },
+                      {
+                        "value": 80,
+                        "color": "red"
+                      }
+                    ]
+                  },
+                  "color": {
+                    "mode": "palette-classic"
+                  }
+                },
+                "overrides": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "kind": "GridLayout",
+      "spec": {
+        "items": [
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 0,
+              "width": 12,
+              "height": 15,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-2"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 0,
+              "width": 12,
+              "height": 15,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-3"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 0,
+              "y": 15,
+              "width": 12,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-1"
+              }
+            }
+          },
+          {
+            "kind": "GridLayoutItem",
+            "spec": {
+              "x": 12,
+              "y": 15,
+              "width": 12,
+              "height": 8,
+              "element": {
+                "kind": "ElementReference",
+                "name": "panel-4"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": [],
+    "liveNow": false,
+    "preload": false,
+    "tags": [],
+    "timeSettings": {
+      "timezone": "browser",
+      "from": "now-6h",
+      "to": "now",
+      "autoRefresh": "",
+      "autoRefreshIntervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "hideTimepicker": false,
+      "fiscalYearStartMonth": 0
+    },
+    "title": "Valenbisi",
+    "variables": [],
+    "preferences": {
+      "layout": {
+        "kind": "GridLayout",
+        "spec": {
+          "items": []
+        }
+      }
+    }
+  }
+}
